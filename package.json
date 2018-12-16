@@ -1,0 +1,27 @@
+{
+  "name": "watchfs",
+  "version": "0.1.0",
+  "description": "Filesystem watcher",
+  "main": "index.js",
+  "bin": {
+    "watchjs": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateekkumarweb/watchfs.git"
+  },
+  "keywords": [
+    "node",
+    "filesystem",
+    "watch"
+  ],
+  "author": "Prateek Kumar <prateek@prateekkumar.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prateekkumarweb/watchfs/issues"
+  },
+  "homepage": "https://github.com/prateekkumarweb/watchfs#readme"
+}
