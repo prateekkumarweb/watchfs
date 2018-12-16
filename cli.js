@@ -2,9 +2,13 @@
 
 const fs = require('fs');
 const shell = require('shelljs');
-const ArgumentParser = require('argparse').ArgumentParser;
-const parser = new ArgumentParser({addHelp: true, description: 'Filesystem watcher'});
 const colors = require('colors');
+const ArgumentParser = require('argparse').ArgumentParser;
+
+// let  version = shell.exec('./get_version.sh', {silent: true}).stdout;
+// version = version.trim();
+
+const parser = new ArgumentParser({/*version: version, */addHelp: true, description: 'Filesystem watcher'});
 
 // console.dir(process.argv);
 
@@ -62,19 +66,29 @@ let watchers = [];
 let fsWait = false;
 
 files.forEach((file) => {
-  watchers.push(fs.watchFile(file, {interval: 100}, (event, filename) => {
-    console.log(filename + " " + event);
-    if (filename) {
-      if (fsWait) return;
-      fsWait = setTimeout(() => {
-        fsWait = false;
-      }, 100);
-      console.log(`File ${filename} has changed`.red);
-      commands.forEach((command) => {
-        console.log(`Command: ${command.yellow}`);
-        shell.exec(command);
-      });
+  watchers.push(fs.watchFile(file, {interval: 100}, (current, previous) => {
+    // console.log(filename + " " + event);
+    console.log('Files changed'.red);
+    // if (filename) {
+    //   if (fsWait) return;
+    //   fsWait = setTimeout(() => {
+    //     fsWait = false;
+    //   }, 100);
+    //   console.log(`File ${filename} has changed`.red);
+    //   commands.forEach((command) => {
+    //     console.log(`Command: ${command.yellow}`);
+    //     shell.exec(command);
+    //   });
+    //   fsWait = false;
+    // }
+    if (fsWait) return;
+    fsWait = setTimeout(() => {
       fsWait = false;
-    }
+    }, 100);
+    commands.forEach((command) => {
+      console.log(`${command.yellow}`);
+      shell.exec(command);
+    });
+    fsWait = false;
   }));
 });
