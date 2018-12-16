@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/prateekkumarweb/watchfs/issues"
   },
-  "homepage": "https://github.com/prateekkumarweb/watchfs#readme"
+  "homepage": "https://github.com/prateekkumarweb/watchfs#readme",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "shelljs": "^0.8.3"
+  }
 }
