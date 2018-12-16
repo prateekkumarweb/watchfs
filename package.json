@@ -4,7 +4,7 @@
   "description": "Filesystem watcher",
   "main": "index.js",
   "bin": {
-    "watchjs": "cli.js"
+    "watchfs": "cli.js"
   },
   "scripts": {
     "test": "node tests/index.js"

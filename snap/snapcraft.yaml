@@ -1,5 +1,6 @@
 name: watchfs
 version: git
+version-script: ./get_version.sh
 summary: Filesystem watcher
 description: |
   Filesystem watcher
@@ -16,5 +17,5 @@ parts:
 
 apps:
   watchfs:
-    command: watchjs
+    command: watchfs
     plugs: [home]
