@@ -3,7 +3,8 @@ version: git
 summary: Filesystem watcher
 description: |
   Filesystem watcher
-
+  See https://github.com/prateekkumarweb/watchfs for more info.
+type: app
 grade: stable
 confinement: strict
 

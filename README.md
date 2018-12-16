@@ -18,9 +18,9 @@ watchfs folder
 
 ## TODO
 
-[ ] Run custom command on folder change
-[ ] Watch all files/folders given through regex
-[ ] Ignore changes to files specified through command line argument
+- [ ] Run custom command on folder change
+- [ ] Watch all files/folders given through regex
+- [ ] Ignore changes to files specified through command line argument
 
 ---
 LICENSE: MIT
