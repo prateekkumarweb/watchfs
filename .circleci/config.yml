@@ -7,7 +7,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.14.2
-      - image: circleci/node:11.4.0
     working_directory: ~/repo
 
     steps:
