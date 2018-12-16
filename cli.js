@@ -8,7 +8,7 @@ const ArgumentParser = require('argparse').ArgumentParser;
 // let  version = shell.exec('./get_version.sh', {silent: true}).stdout;
 // version = version.trim();
 
-const parser = new ArgumentParser({/*version: version, */addHelp: true, description: 'Filesystem watcher'});
+const parser = new ArgumentParser({version: 'v0.1.0', addHelp: true, description: 'Filesystem watcher'});
 
 // console.dir(process.argv);
 

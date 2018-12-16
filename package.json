@@ -1,6 +1,6 @@
 {
-  "name": "watchfs",
-  "version": "0.0.1",
+  "name": "node-watchfs",
+  "version": "0.1.0",
   "description": "Watch for file changes and run given commands when change is detected",
   "main": "index.js",
   "bin": {
