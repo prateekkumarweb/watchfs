@@ -7,7 +7,9 @@
     "watchfs": "./cli.js"
   },
   "scripts": {
-    "test": "node tests/index.js"
+    "test": "nyc mocha",
+    "report-coverage": "nyc report --reporter=lcov",
+    "codecov": "codecov"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,8 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
-    "codecov": "^3.1.0"
+    "codecov": "^3.1.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0"
   }
 }

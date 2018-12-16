@@ -31,4 +31,4 @@ jobs:
 
       - run:
           name: Generate code coverage
-          command: './node_modules/.bin/codecov'
+          command: npm test && npm run report-coverage && npm run codecov

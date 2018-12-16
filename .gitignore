@@ -61,6 +61,8 @@ typings/
 .next
 
 *.sublime-workspace
+*.lcov
+coverage
 
 parts/
 prime/
