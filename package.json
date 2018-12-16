@@ -26,6 +26,7 @@
   "homepage": "https://github.com/prateekkumarweb/watchfs#readme",
   "dependencies": {
     "argparse": "^1.0.10",
+    "colors": "^1.3.3",
     "shelljs": "^0.8.3"
   }
 }

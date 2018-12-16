@@ -13,14 +13,10 @@ More features to be added soon.
 
 The below command will watch folder/files (passed as command line argument) and log the changes.
 ```sh
-watchfs -e "expr"
+watchfs -e "expr" -c "command"
 ```
 
-## TODO
-
-- [ ] Run custom command on folder change
-- [x] Watch all files/folders given through regex
-- [ ] Ignore changes to files specified through command line argument
+See `watchfs -h` for more information
 
 ---
 LICENSE: MIT
