@@ -1,0 +1,19 @@
+name: watchfs
+version: git
+summary: Filesystem watcher
+description: |
+  Filesystem watcher
+
+grade: stable
+confinement: strict
+
+parts:
+  watchfs:
+    plugin: nodejs
+    source: .
+    node-engine: 10.14.2
+
+apps:
+  watchfs:
+    command: watchjs
+    plugs: [home]
