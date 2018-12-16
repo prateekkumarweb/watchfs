@@ -3,7 +3,7 @@ version: git
 version-script: ./get_version.sh
 summary: Filesystem watcher
 description: |
-  Filesystem watcher
+  Watch for file changes and run given commands when change is detected.
   See https://github.com/prateekkumarweb/watchfs for more info.
 type: app
 grade: stable
