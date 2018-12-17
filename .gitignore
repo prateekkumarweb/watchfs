@@ -64,6 +64,7 @@ typings/
 *.lcov
 coverage
 
+dist
 parts/
 prime/
 stage/

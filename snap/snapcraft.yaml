@@ -14,8 +14,13 @@ parts:
     plugin: nodejs
     source: .
     node-engine: 10.14.2
+    override-build: |
+      rm -rf node_modules
+      rm -rf dist
+      npm install
+      npm build
 
 apps:
   watchfs:
-    command: watchfs
+    command: node dist/cli.js
     plugs: [home]
