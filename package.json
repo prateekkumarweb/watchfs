@@ -5,10 +5,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "watchfs": "./dist/cli.js"
+    "watchfs": "dist/cli.js"
   },
   "scripts": {
+    "prepublish": "yarn run build",
     "build": "tsc",
+    "watch-build": "tsc --watch",
     "test": "nyc mocha -r ts-node/register src/**/*.spec.ts",
     "report-coverage": "nyc report --reporter=lcov",
     "codecov": "codecov"
