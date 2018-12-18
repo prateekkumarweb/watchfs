@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const version = 'v0.1.0'
+const version = 'v0.1.1'
 
 import { WatchFS } from '.'
 import { ArgumentParser } from 'argparse'
