@@ -1,7 +1,7 @@
 {
   "folders": [{
     "path": ".",
-    "folder_exclude_patterns": ["node_modules"]
+    "folder_exclude_patterns": ["node_modules", "parts", "prime", "stage", "coverage", ".nyc_output", "dist", "snap/.snapcraft"]
   }],
   "settings": {
     "tab_size": 2,
