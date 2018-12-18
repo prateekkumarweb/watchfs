@@ -1,8 +1,6 @@
-import * as fs from 'fs'
-import * as shell from 'shelljs'
-import * as colors from 'colors'
-
-const flatArray = (arr: any) => [].concat(...arr);
+import fs = require('fs')
+import shell = require('shelljs')
+import colors = require('colors')
 
 export class WatchFS {
   expressions: string[]
