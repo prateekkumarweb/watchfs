@@ -15,6 +15,14 @@
     "report-coverage": "nyc report --reporter=lcov",
     "codecov": "codecov"
   },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "src/**/*.spec.ts"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/prateekkumarweb/watchfs.git"
