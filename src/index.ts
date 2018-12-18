@@ -24,22 +24,25 @@ export class WatchFS {
     })
 
     if (this.files.length == 0) {
-      console.log(`No files found to watch`.yellow)
+      console.log(colors.yellow(`No files found to watch`))
       return
     }
 
-    console.log(`Watching for file changes in \n${this.files.join('\n').green}`);
+    console.log(`Watching for file changes in \n${colors.green(this.files.join('\n'))}`);
 
     this.files.forEach((file) => {
-      this.watchers.push(fs.watchFile(file, {interval: 100}, (current: Object, previous: Object) => {
-        console.log('Files changed'.red)
+      this.watchers.push(fs.watchFile(file, {interval: 100}, (current: any, previous: any) => {
+        let curr_date: number = current.mtime.getTime()
+        let prev_date: number = previous.mtime.getTime()
+        if (curr_date == prev_date) return;
+        console.log(colors.red('Files changed'))
         if (this.fsWait) return
         this.fsWait = true
         setTimeout(() => {
           this.fsWait = false
         }, 100)
         commands.forEach((command: string) => {
-          console.log(`${command.yellow}`)
+          console.log(`${colors.yellow(command)}`)
           shell.exec(command)
         })
         this.fsWait = false
