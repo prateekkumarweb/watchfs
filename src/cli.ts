@@ -27,13 +27,10 @@ const args = parser.parseArgs();
 if (!args.command)
   args.command = [];
 
-const exprs: string[] = args.expr
-const commands: string[] = args.command
+const exprs: any[] = args.expr
+const commands: any[] = args.command
 
-let files: string[] = [];
+const flatexprs: string[] = [].concat(...exprs)
+const flatcommands: string[] = [].concat(...commands)
 
-args.expr.forEach((pattern: string) => {
-  exprs.push(pattern)
-})
-
-new WatchFS(exprs, commands)
+new WatchFS(flatexprs, flatcommands)
