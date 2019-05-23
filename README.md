@@ -1,4 +1,4 @@
-# watchfs
+# WatchFS
 
 [![NPM](https://nodei.co/npm/node-watchfs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-watchfs/)
 [![Snap Status](https://build.snapcraft.io/badge/prateekkumarweb/watchfs.svg)](https://build.snapcraft.io/user/prateekkumarweb/watchfs)
@@ -20,5 +20,7 @@ watchfs -e "expr" -c "command"
 See `watchfs -h` for more information.
 
 ---
+
+Copyright (c) 2018-2019 Prateek Kumar
 
 LICENSE: MIT

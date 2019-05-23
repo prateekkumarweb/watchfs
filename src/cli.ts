@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const version = "v0.1.2";
+const _version = "v0.1.2";
 
 import { WatchFS } from ".";
 import { ArgumentParser } from "argparse";
@@ -11,7 +11,7 @@ import shell from "shelljs";
  * Initiaze argument parser
  */
 const parser = new ArgumentParser({
-  version: version,
+  version: _version,
   addHelp: true,
   description: "Filesystem watcher"
 });
