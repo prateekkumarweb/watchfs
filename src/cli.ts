@@ -4,7 +4,12 @@ const version = "v0.1.2";
 
 import { WatchFS } from ".";
 import { ArgumentParser } from "argparse";
+import colors from "colors";
+import shell from "shelljs";
 
+/**
+ * Initiaze argument parser
+ */
 const parser = new ArgumentParser({
   version: version,
   addHelp: true,
@@ -36,4 +41,17 @@ const commands: any[] = args.command;
 const flatexprs: string[] = [].concat(...exprs);
 const flatcommands: string[] = [].concat(...commands);
 
-new WatchFS(flatexprs, flatcommands);
+/**
+ * Initialize watcher
+ */
+const watcher = new WatchFS(flatexprs);
+
+/**
+ * Run commands after each change in file is detected
+ */
+watcher.watchFiles(() => {
+  flatcommands.forEach((command: string) => {
+    console.log(`${colors.yellow(command)}`);
+    shell.exec(command);
+  });
+});

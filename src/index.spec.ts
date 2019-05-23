@@ -1,10 +1,11 @@
 import { WatchFS } from ".";
 
 // import assert = require('assert')
-import mocha = require("mocha");
+import mocha from "mocha";
+// import shell from "shelljs";
 
-mocha.describe("Basic constructor", () => {
+mocha.describe("Watch for", () => {
   it("does nothing", () => {
-    new WatchFS([], []);
+    new WatchFS([]);
   });
 });
