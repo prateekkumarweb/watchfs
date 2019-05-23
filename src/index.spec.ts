@@ -11,22 +11,23 @@ mocha.describe("Watch for a file", () => {
     done();
   });
 
-  let fname = "random_file.txt";
+  let fldr = "test_random_watch";
+  let fname = `random_file.watchfile`;
+
+  shell.mkdir("-p", [fldr]);
 
   it(`creates ${fname}`, done => {
-    const w = new WatchFS(["."]);
+    const w = new WatchFS([fldr]);
     let changed = false;
     w.watchFiles(filename => {
       if (filename == fname) {
-        console.log(filename);
         changed = true;
       }
     });
-    shell.exec(`touch ${fname}`);
+    shell.exec(`touch ${fldr}/${fname}`);
     setTimeout(() => {
       if (!changed) {
         done(new Error(`File changed but not watched`));
-        w.stop();
       } else {
         done();
       }
@@ -35,15 +36,14 @@ mocha.describe("Watch for a file", () => {
   });
 
   it(`changes ${fname}`, done => {
-    const w = new WatchFS(["."]);
+    const w = new WatchFS([fldr]);
     let changed = false;
     w.watchFiles(filename => {
       if (filename == fname) {
-        console.log(filename);
         changed = true;
       }
     });
-    shell.exec(`echo "Hello" >> ${fname}`);
+    shell.exec(`echo "Hello" >> ${fldr}/${fname}`);
     setTimeout(() => {
       if (!changed) {
         done(new Error(`File changed but not watched`));
@@ -55,15 +55,14 @@ mocha.describe("Watch for a file", () => {
   });
 
   it(`deletes ${fname}`, done => {
-    const w = new WatchFS(["."]);
+    const w = new WatchFS([fldr]);
     let changed = false;
     w.watchFiles(filename => {
       if (filename == fname) {
-        console.log(filename);
         changed = true;
       }
     });
-    shell.exec(`rm ${fname}`);
+    shell.exec(`rm ${fldr}/${fname}`);
     setTimeout(() => {
       if (!changed) {
         done(new Error(`File changed but not watched`));
@@ -72,5 +71,10 @@ mocha.describe("Watch for a file", () => {
       }
       w.stop();
     }, 100);
+  });
+
+  it(`deleting temp folder`, done => {
+    shell.rm("-r", [fldr]);
+    done();
   });
 });
