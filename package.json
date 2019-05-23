@@ -17,7 +17,7 @@
     "codecov": "codecov",
     "typedocs": "yarn typedoc --out docs",
     "add_cname": "echo \"watchfs.js.org\" > docs/CNAME",
-    "docs": "yarn typedocs && yarn add_cname"
+    "docs": "yarn typedocs && yarn add_cname && touch docs/.nojekyll"
   },
   "nyc": {
     "extension": [
