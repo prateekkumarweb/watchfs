@@ -8,6 +8,7 @@ export class WatchFS {
   watchers: (fs.FSWatcher | void)[];
   fsWait: boolean;
   files: string[];
+
   constructor(expressions: string[], commands: string[]) {
     this.expressions = expressions;
     this.commands = commands;
@@ -41,16 +42,20 @@ export class WatchFS {
           console.log(colors.red("Files changed"));
           if (this.fsWait) return;
           this.fsWait = true;
-          setTimeout(() => {
+          this.runCommands().then(() => {
             this.fsWait = false;
-          }, 100);
-          commands.forEach((command: string) => {
-            console.log(`${colors.yellow(command)}`);
-            shell.exec(command);
           });
-          this.fsWait = false;
         })
       );
     });
   }
+
+  async runCommands() {
+    this.commands.forEach((command: string) => {
+      console.log(`${colors.yellow(command)}`);
+      shell.exec(command);
+    });
+  }
 }
+
+export default WatchFS;

@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "watchfs": "dist/cli.js"
+    "watchfs": "dist/cli.js",
+    "wf": "dist/cli.js"
   },
   "scripts": {
     "prepublish": "yarn run build",
