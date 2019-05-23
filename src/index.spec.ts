@@ -1,12 +1,10 @@
-import { WatchFS } from '.'
+import { WatchFS } from ".";
 
 // import assert = require('assert')
-import mocha = require('mocha')
+import mocha = require("mocha");
 
-mocha.describe('Basic constructor', () => {
-
-  it('does nothing', () => {
-    new WatchFS([], [])
+mocha.describe("Basic constructor", () => {
+  it("does nothing", () => {
+    new WatchFS([], []);
   });
-
 });

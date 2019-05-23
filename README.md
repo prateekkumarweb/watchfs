@@ -12,6 +12,7 @@ Watch for file changes and run given commands when change is detected.
 ## Usage
 
 The below command will watch folder/files (passed as command line argument) and log the changes.
+
 ```sh
 watchfs -e "expr" -c "command"
 ```
@@ -19,4 +20,5 @@ watchfs -e "expr" -c "command"
 See `watchfs -h` for more information.
 
 ---
+
 LICENSE: MIT

@@ -16,7 +16,7 @@ parts:
     node-engine: 10.14.2
     node-package-manager: yarn
     npm-run:
-    - build
+      - build
 
 apps:
   watchfs:
