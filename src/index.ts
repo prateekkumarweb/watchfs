@@ -7,8 +7,10 @@ import shell from "shelljs";
  */
 export class WatchFS {
   expressions: string[];
-  fsWait: boolean;
+  _fsWait: boolean;
   files: string[];
+  watchers: fs.FSWatcher[];
+  _status: boolean;
 
   /**
    * Initialize WatchFS object
@@ -19,7 +21,9 @@ export class WatchFS {
   constructor(expressions: string[]) {
     this.expressions = expressions;
     this.files = [];
-    this.fsWait = false;
+    this._fsWait = false;
+    this.watchers = [];
+    this._status = false;
 
     /**
      * Find all matching files
@@ -53,20 +57,35 @@ export class WatchFS {
    * Watch for file changes
    * @param callback Function that will be called after a file change is detected
    */
-  watchFiles(callback: () => any) {
+  watchFiles(callback: (arg0: string) => any) {
+    if (this._status) return;
+    this._status = true;
     this.files.forEach(file => {
-      fs.watch(file, (eventType: string, filename: string) => {
-        if (eventType == "rename") {
-          console.log(colors.red(`File ${filename} renamed`));
-        } else {
-          console.log(colors.red(`File ${filename} changed`));
-        }
-        if (this.fsWait) return;
-        this.fsWait = true;
-        callback();
-        this.fsWait = false;
-      });
+      this.watchers.push(
+        fs.watch(file, (eventType: string, filename: string) => {
+          if (eventType == "rename") {
+            console.log(colors.red(`File ${filename} renamed`));
+          } else {
+            console.log(colors.red(`File ${filename} changed`));
+          }
+          if (this._fsWait) return;
+          this._fsWait = true;
+          callback(filename);
+          this._fsWait = false;
+        })
+      );
     });
+  }
+
+  /**
+   * Stop watching files
+   */
+  stop() {
+    this.watchers.forEach(watcher => {
+      watcher.close();
+    });
+    this.watchers = [];
+    this._status = false;
   }
 }
 
