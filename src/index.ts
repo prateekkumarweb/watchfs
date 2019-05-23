@@ -55,20 +55,17 @@ export class WatchFS {
    */
   watchFiles(callback: () => any) {
     this.files.forEach(file => {
-      fs.watchFile(
-        file,
-        { interval: 100 },
-        (current: fs.Stats, previous: fs.Stats) => {
-          let curr_date: number = current.mtime.getTime();
-          let prev_date: number = previous.mtime.getTime();
-          if (curr_date == prev_date) return;
-          console.log(colors.red("Files changed"));
-          if (this.fsWait) return;
-          this.fsWait = true;
-          callback();
-          this.fsWait = false;
+      fs.watch(file, (eventType: string, filename: string) => {
+        if (eventType == "rename") {
+          console.log(colors.red(`File ${filename} renamed`));
+        } else {
+          console.log(colors.red(`File ${filename} changed`));
         }
-      );
+        if (this.fsWait) return;
+        this.fsWait = true;
+        callback();
+        this.fsWait = false;
+      });
     });
   }
 }
