@@ -9,15 +9,15 @@
     "wf": "dist/cli.js"
   },
   "scripts": {
-    "prepublish": "yarn run build",
+    "prepare": "npm run build",
     "build": "tsc",
     "watch-build": "tsc --watch",
     "test": "nyc mocha -r ts-node/register src/**/*.spec.ts",
     "report-coverage": "nyc report --reporter=lcov",
     "codecov": "codecov",
-    "typedocs": "yarn typedoc --out docs",
+    "typedocs": "npx typedoc --out docs",
     "add_cname": "echo \"watchfs.js.org\" > docs/CNAME",
-    "docs": "yarn typedocs && yarn add_cname && touch docs/.nojekyll"
+    "docs": "npm run typedocs && npm run add_cname && touch docs/.nojekyll"
   },
   "nyc": {
     "extension": [
@@ -57,10 +57,10 @@
     "@types/node": "^10.12.15",
     "codecov": "^3.1.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "nyc": "^14.1.1",
     "prettier": "1.17.1",
     "ts-node": "^7.0.1",
-    "typedoc": "^0.14.2",
+    "typedoc": "^0.15.0",
     "typescript": "^3.2.2"
   }
 }
