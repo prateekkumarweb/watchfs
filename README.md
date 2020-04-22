@@ -19,7 +19,7 @@ watchfs -e "expr" -c "command"
 
 See `watchfs -h` for more information.
 
-See documentation [here](https://prateekkumar.me/watchfs/).
+See documentation [here](https://watchfs.js.org/).
 
 ---
 
